@@ -8,7 +8,6 @@ pollutantmean <- function(directory, pollutant, id=1:332) {
     mean(data[,pollutant], na.rm = TRUE)
 }
 
-<<<<<<< HEAD
 complete <- function(directory, id=1:332) {
     data <- data.frame(id=1, numobs=1)[0, ]
     for (each in id){
