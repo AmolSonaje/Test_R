@@ -18,3 +18,16 @@ complete <- function(directory, id=1:332) {
     }
     data
 }
+
+corr <- function(directory, threshold=0){
+    filesNames <- list.files(path = directory, pattern="*.csv")
+    corr_vect <- NULL
+    for (each in filesNames){
+        dat <- read.csv(paste(directory, '/', each, sep = ''), as.is=T)
+        dat <- dat[complete.cases(dat),]
+        if (nrow(dat)>threshold){
+            corr_vect <- c(corr_vect, cor(dat[,'sulfate'], dat[,'nitrate']))
+            }
+    }
+    corr_vect
+}
