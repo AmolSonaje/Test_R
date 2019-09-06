@@ -18,6 +18,4 @@ complete <- function(directory, id=1:332) {
     }
     data
 }
-    
-=======
->>>>>>> 9c97966c53d0c17d83eb49fa674781e1b44f1095
+
