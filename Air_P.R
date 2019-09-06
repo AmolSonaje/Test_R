@@ -9,11 +9,12 @@ pollutantmean <- function(directory, pollutant, id=1:332) {
 }
 
 complete <- function(directory, id=1:332) {
-    data <- data.frame(id=1, numobs=1)[0, ]
+    data <- data.frame()
     for (each in id){
         filesNames <- paste(directory, '/', formatC(each, width = 3, flag = '0'), '.csv', sep = '')
-        dat <- read.csv(filesNames, as.is = T)
-        d2 <- list(each, sum(complete.cases(dat)))
+        dat <- read.csv(filesNames, as.is = T, header = T)
+        nobs <- sum(complete.cases(dat))
+        d2 <- data.frame(each, nobs)
         data <- rbind(data, d2)
     }
     data
@@ -31,3 +32,4 @@ corr <- function(directory, threshold=0){
     }
     corr_vect
 }
+
